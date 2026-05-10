@@ -1,2 +1,2 @@
-# Rewars-program
+# Rewards-program
 

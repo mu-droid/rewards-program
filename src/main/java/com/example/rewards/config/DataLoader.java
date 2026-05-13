@@ -12,14 +12,20 @@ import org.springframework.context.annotation.Configuration;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-
+/**
+ * Loads sample customer and transaction data
+ * during application startup.
+ */
 @Configuration
 @RequiredArgsConstructor
 public class DataLoader {
 
     private final CustomerRepository customerRepository;
     private final TransactionRepository transactionRepository;
-
+    /**
+     * Loads sample customer and transaction data
+     * into the database during application startup.
+     */
     @Bean
     public CommandLineRunner loadData() {
         return args -> {

@@ -1,22 +1,26 @@
 package com.example.rewards.util;
 
 import java.math.BigDecimal;
-
+/**
+ * Utility class for reward point calculations.
+ */
 public class RewardUtil {
 
     private RewardUtil() {
         // utility class
     }
 
+
     /**
-     * Calculates reward points for a given transaction amount.
+     * Calculates reward points based on transaction amount.
      *
      * Rules:
-     * - 0 points for amounts $50 and below
-     * - 1 point per dollar spent between $50 and $100
-     * - 2 points per dollar spent above $100
+     * - No points for first $50
+     * - 1 point for every dollar between $51-$100
+     * - 2 points for every dollar above $100
      *
-     * Example: $120 purchase = 2x$20 + 1x$50 = 90 points
+     * @param amount transaction amount
+     * @return reward points
      */
     public static int calculatePoints(BigDecimal amount) {
 

@@ -15,6 +15,9 @@ import java.time.YearMonth;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Service responsible for reward calculations.
+ */
 @Service
 @RequiredArgsConstructor
 public class RewardService {
@@ -23,6 +26,12 @@ public class RewardService {
 
     private final TransactionRepository transactionRepository;
 
+    /**
+     * Fetches reward summary for a customer.
+     *
+     * @param customerId customer id
+     * @return reward summary response
+     */
     public RewardResponseDto getRewards(Long customerId) {
 
         Customer customer = customerRepository.findById(customerId)
@@ -58,7 +67,11 @@ public class RewardService {
                 .totalRewards(totalRewards)
                 .build();
     }
-
+    /**
+     * Fetches reward summaries for all customers.
+     *
+     * @return list of reward summaries
+     */
     public List<RewardResponseDto> getAllRewards() {
         return customerRepository.findAll()
                 .stream()

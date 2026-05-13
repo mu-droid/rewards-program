@@ -5,9 +5,19 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDate;
 import java.util.List;
-
+/**
+ * Repository for transaction persistence operations.
+ */
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
-
+    /**
+     * Fetches transactions for a customer
+     * within a date range.
+     *
+     * @param customerId customer id
+     * @param startDate start date
+     * @param endDate end date
+     * @return list of transactions
+     */
     List<Transaction> findByCustomerIdAndTransactionDateBetween(
             Long customerId,
             LocalDate startDate,

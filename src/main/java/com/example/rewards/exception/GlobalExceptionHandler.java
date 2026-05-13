@@ -9,7 +9,12 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-
+    /**
+     * Handles resource not found exceptions.
+     *
+     * @param ex exception object
+     * @return error response
+     */
     @ExceptionHandler(ResourceNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public Map<String, String> handleNotFound(ResourceNotFoundException ex) {
@@ -18,7 +23,12 @@ public class GlobalExceptionHandler {
         error.put("message", ex.getMessage());
         return error;
     }
-
+    /**
+     * Handles validation exceptions.
+     *
+     * @param ex validation exception
+     * @return error response
+     */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String, String> handleValidation(MethodArgumentNotValidException ex) {
@@ -27,7 +37,13 @@ public class GlobalExceptionHandler {
         error.put("message", "Validation failed: " + ex.getBindingResult().getFieldError().getDefaultMessage());
         return error;
     }
-
+    /**
+     * Handles unexpected application exceptions and returns
+     * a generic internal server error response.
+     *
+     * @param ex exception object
+     * @return error response containing error details
+     */
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Map<String, String> handleGeneric(Exception ex) {

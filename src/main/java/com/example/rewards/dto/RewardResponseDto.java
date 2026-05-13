@@ -4,7 +4,9 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.util.Map;
-
+/**
+ * DTO representing customer reward summary.
+ */
 @Data
 @Builder
 public class RewardResponseDto {

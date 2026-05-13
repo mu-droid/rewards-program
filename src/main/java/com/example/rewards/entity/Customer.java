@@ -2,7 +2,9 @@ package com.example.rewards.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-
+/**
+ * Entity representing a customer.
+ */
 @Entity
 @Table(name = "customers")
 @Getter

@@ -9,7 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+/**
+ * REST controller exposing reward APIs.
+ */
 @RestController
 @RequestMapping("/api/rewards")
 @RequiredArgsConstructor
@@ -17,7 +19,12 @@ import java.util.List;
 public class RewardController {
 
     private final RewardService rewardService;
-
+    /**
+     * Returns reward details for a customer.
+     *
+     * @param customerId customer id
+     * @return reward response
+     */
     @GetMapping("/{customerId}")
     @Operation(
             summary = "Get rewards for a specific customer",
@@ -29,7 +36,11 @@ public class RewardController {
     ) {
         return rewardService.getRewards(customerId);
     }
-
+    /**
+     * Returns reward summaries for all customers.
+     *
+     * @return list of reward responses
+     */
     @GetMapping("/all")
     @Operation(
             summary = "Get rewards for all customers",
